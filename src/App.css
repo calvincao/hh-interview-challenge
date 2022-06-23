@@ -1,7 +1,14 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Serif+Text&display=swap');
+
+body {
+  margin: 0;
+}
 .App {
   text-align: center;
+  font-family: 'DM Serif Text', serif;
+  font-size: large;
+  color: #363c3c;
 }
-
 .navbar {
   background-color: #363c3c;
   height: 4vh;
@@ -10,9 +17,6 @@
   justify-content: space-between;
   padding: 1.5vh 3vw;
   box-shadow: 1px 1px 10px 1px rgba(0, 0, 0, 0.3);
-  /* position: fixed;
-  top: 0;
-  width: 100% */
 }
 #main-body {
   display: flex;
@@ -20,10 +24,19 @@
   justify-content: space-between;
   height: 90vh;
 }
+.contents{
+  padding-top: 3vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%
+}
 #card-container {
   display: grid;
-    grid-template-columns: repeat(4, minmax(280px, 18%));
-    grid-template-rows: auto;
+  grid-template-columns: repeat(4, minmax(18vw, 18%));
+  grid-template-rows: repeat(3, minmax(25vh, 15%));
+  column-gap: 2vw;
+  row-gap: 2vh;
 }
 #sidebar {
   display: flex;
@@ -63,7 +76,22 @@ li {
   flex-direction: column;
   box-shadow: 1px 1px 10px 1px rgba(0, 0, 0, 0.2);
 }
-
+.pagination{
+  display: flex;
+  flex-direction: row;
+}
+.page-item{
+  margin-left: 1vw;
+  margin-right: 1vw;
+}
+.page-link{
+  text-decoration: none;
+  color: #363c3c;
+}
+.current-page{
+  color: #363c3c;
+  font-size: x-large;
+}
 #search {
   border: 1px solid #363c3c;
   border-radius: 7px;
