@@ -1,4 +1,4 @@
-export const findClosestColors = (colorsArr, targetColor) => {
+export const findClosestColors = (colorsArr, targetColor, n = 5) => {
   const colorDiff = (color1, color2) => {
     // remove # from the first char of the color string and destructure the string into individual R, G, and B values (0-255)
     color1 = color1.substring(1);
@@ -23,7 +23,7 @@ export const findClosestColors = (colorsArr, targetColor) => {
   let colorsAndDeltaArray = colorsArr.map((color) => [color, colorDiff(targetColor, color)]);
   // sort the array based on its distance from target color
   let sortedColors = colorsAndDeltaArray.sort((a, b) => a[1] - b[1]);
-  // take the 5 colors closest to the start of the array excluding the 0 index since that's the target color
-  let closestColors = sortedColors.slice(1, 6).map((color) => color[0]);
+  // take the n colors closest to the start of the array excluding the 0 index since that's the target color
+  let closestColors = sortedColors.slice(1, 1 + n).map((color) => color[0]);
   return closestColors;
 };

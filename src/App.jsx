@@ -11,17 +11,20 @@ function App() {
   const [colors, setColors] = useState([]);
   const [search, setSearch] = useState({viewResults: false, searchResults: [], searchTerm: ''});
   const [category, setCategory] = useState({viewCategory: false, name: '', colors: []});
+  const [page, setPage] = useState('');
 
   useEffect(()=>{
-    // generate random numbers ranging from 0 - 255^3 representing all possible color values 
+    // generate random unique numbers ranging from 0 - 255^3 representing all possible color values 
     // sort numbers and then transform them into hex color values
-    const randomNums = [];
+    const randomNums = new Set();
     const hexFromDecimal = (num) => '#' + num.toString(16).padStart(6, '0');
     const generateRandNum = () => Math.floor(Math.random()*256**3);
     for (let i = 0; i < 100; i++){
-      randomNums.push(generateRandNum())
+      let num = generateRandNum();
+      while (randomNums.has(num)) num = generateRandNum();
+      randomNums.add(num)
     }
-    const randomColors = randomNums.sort((a,b) => a - b).map(num => hexFromDecimal(num))
+    const randomColors = [...randomNums].sort((a,b) => a - b).map(num => hexFromDecimal(num))
     setColors(randomColors);
   }, []);
 
@@ -36,6 +39,7 @@ function App() {
           findClosestColors={findClosestColors}
           setClosestColors={setClosestColors}
           setSearch={setSearch}
+          setCategory={setCategory}
         />
         <Contents
           colors={colors}
@@ -46,6 +50,7 @@ function App() {
           closestColors={closestColors}
           search={search}
           setSearch={setSearch}
+          category={category}
         />
       </main>
     </div>

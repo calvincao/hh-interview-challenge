@@ -3,8 +3,9 @@ import CardContainer from './CardContainer';
 import Pagination from '../components/Pagination';
 import DetailView from './DetailView';
 import SearchResults from './SearchResults';
+import CategoryView from './CategoryView';
 
-function Contents ({view, setView, setClosestColors, findClosestColors, colors, closestColors, search, setSearch}) {
+function Contents ({view, setView, setClosestColors, findClosestColors, colors, closestColors, search, setSearch, category, setCategory}) {
   const [currentPage, setCurrentPage] = useState(1);
   const perPage = 12;
   const indOfLast = currentPage * perPage;
@@ -12,7 +13,19 @@ function Contents ({view, setView, setClosestColors, findClosestColors, colors, 
   const currentColors = colors.slice(indOfFirst, indOfLast)
 
   if (search.viewResults === true) return (
-    <SearchResults search={search} setView={setView} setSearch={setSearch} setClosestColors={setClosestColors} findClosestColors={findClosestColors}/>
+    <SearchResults
+      search={search}
+      setView={setView}
+      setSearch={setSearch}
+      setClosestColors={setClosestColors}
+      findClosestColors={findClosestColors}
+    />
+  )
+  else if (category.viewCategory === true) return (
+    <CategoryView
+      category={category}
+      setCategory={setCategory}
+    />
   )
   else if (view !== null) return (
     <section className="contents">
