@@ -11,14 +11,14 @@ function Sidebar ({ setView, colors, findClosestColors, setClosestColors, setSea
     <section id="sidebar">
       <button id="random-color-btn" onClick={viewRandomColor}>Random Color</button>
       <ul>
-        <li>Red</li>
-        <li>Orange</li>
-        <li>Yellow</li>
-        <li>Green</li>
-        <li>Blue</li>
-        <li>Purple</li>
-        <li>Brown</li>
-        <li>Gray</li>
+        <li><a href="!#">Red</a></li>
+        <li><a href="!#">Orange</a></li>
+        <li><a href="!#">Yellow</a></li>
+        <li><a href="!#">Green</a></li>
+        <li><a href="!#">Blue</a></li>
+        <li><a href="!#">Purple</a></li>
+        <li><a href="!#">Brown</a></li>
+        <li><a href="!#">Gray</a></li>
       </ul>
     </section>
   )

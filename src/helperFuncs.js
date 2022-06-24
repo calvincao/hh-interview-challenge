@@ -21,7 +21,7 @@ export const findClosestColors = (colorsArr, targetColor) => {
   };
   // create an array of array where each element contains the color name and distance from target
   let colorsAndDeltaArray = colorsArr.map((color) => [color, colorDiff(targetColor, color)]);
-  // sort the array based on its difference
+  // sort the array based on its distance from target color
   let sortedColors = colorsAndDeltaArray.sort((a, b) => a[1] - b[1]);
   // take the 5 colors closest to the start of the array excluding the 0 index since that's the target color
   let closestColors = sortedColors.slice(1, 6).map((color) => color[0]);

@@ -14,8 +14,11 @@ function SearchResults ({search, setSearch}) {
   }
   if (search.searchResults.length === 0) return (
     <div className="search-results">
-      <h1>Search Results</h1>
-      <h3>No results for '{search.searchTerm}'...</h3>
+      <div className="search-header">
+        <h1>Search results for '{search.searchTerm}'</h1>
+        <button onClick={exitSearch} className="exit-search-btn">clear search</button>
+      </div>
+      <h3>No results found</h3>
     </div>
   )
 
@@ -24,7 +27,7 @@ function SearchResults ({search, setSearch}) {
       <div className="search-results">
         <div className="search-header">
           <h1>Search results for '{search.searchTerm}'</h1>
-          <button onClick={exitSearch} className="exit-search-btn">exit search</button>
+          <button onClick={exitSearch} className="exit-search-btn">clear search</button>
         </div>
         <CardContainer colors={currentColors}/>
         <Pagination

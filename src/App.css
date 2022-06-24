@@ -115,13 +115,14 @@ li {
   margin-left: 1vw;
   margin-right: 1vw;
 }
-.page-link{
+a{
   text-decoration: none;
   color: #363c3c;
 }
 .current-page{
   color: #363c3c;
   font-size: x-large;
+  text-decoration: underline;
 }
 #search {
   border: 1px solid #363c3c;

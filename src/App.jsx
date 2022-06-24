@@ -10,13 +10,18 @@ function App() {
   const [closestColors, setClosestColors] = useState([]);
   const [colors, setColors] = useState([]);
   const [search, setSearch] = useState({viewResults: false, searchResults: [], searchTerm: ''});
+  const [category, setCategory] = useState({viewCategory: false, name: '', colors: []});
 
   useEffect(()=>{
-    const randomColors = [];
-    const generateColor = () => '#' + Math.floor(Math.random()*256**3).toString(16).padStart(6, '0');
+    // generate random numbers ranging from 0 - 255^3 representing all possible color values 
+    // sort numbers and then transform them into hex color values
+    const randomNums = [];
+    const hexFromDecimal = (num) => '#' + num.toString(16).padStart(6, '0');
+    const generateRandNum = () => Math.floor(Math.random()*256**3);
     for (let i = 0; i < 100; i++){
-      randomColors.push(generateColor())
+      randomNums.push(generateRandNum())
     }
+    const randomColors = randomNums.sort((a,b) => a - b).map(num => hexFromDecimal(num))
     setColors(randomColors);
   }, []);
 
