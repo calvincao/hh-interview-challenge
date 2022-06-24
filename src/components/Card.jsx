@@ -1,5 +1,6 @@
+import { findClosestColors } from "../helperFuncs";
 
-function Card({ colors, colorName, setView, size, findClosestColors, setClosestColors }) {
+function Card({ colors, colorName, setDetail, size, setClosestColors, setPage }) {
   const small = {
     borderRadius: '8px 8px 0px 0px',
     width: '100%',
@@ -19,8 +20,9 @@ function Card({ colors, colorName, setView, size, findClosestColors, setClosestC
     backgroundColor: colorName
   }
   const viewCard = () => {
-    setView(colorName);
+    setDetail(colorName);
     setClosestColors(findClosestColors(colors, colorName));
+    setPage('detail');
   }
   return (
     <div className="card">
@@ -28,7 +30,7 @@ function Card({ colors, colorName, setView, size, findClosestColors, setClosestC
         alt={colorName}
         style={size === 'small' ? small : size === 'large' ? large : mini}
         className="swatch"
-        onClick={setView ? viewCard : null}
+        onClick={setDetail ? viewCard : null}
       />
       <p>{colorName}</p>
     </div>

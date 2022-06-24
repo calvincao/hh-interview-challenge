@@ -2,15 +2,14 @@ import './App.css';
 import Navbar from './components/Navbar';
 import Sidebar from './components/Sidebar';
 import Contents from './containers/Contents';
-import { findClosestColors } from './helperFuncs';
 import { useState, useEffect } from 'react';
 
 function App() {
-  const [view, setView] = useState(null);
+  const [detail, setDetail] = useState(null);
   const [closestColors, setClosestColors] = useState([]);
   const [colors, setColors] = useState([]);
-  const [search, setSearch] = useState({viewResults: false, searchResults: [], searchTerm: ''});
-  const [category, setCategory] = useState({viewCategory: false, name: '', colors: []});
+  const [search, setSearch] = useState({ searchTerm: '', searchResults: [] });
+  const [category, setCategory] = useState({ name: '', colors: [] });
   const [page, setPage] = useState('');
 
   useEffect(()=>{
@@ -30,27 +29,27 @@ function App() {
 
   return (
     <div className="App">
-      <Navbar colors={colors} setSearch={setSearch}/>
+      <Navbar colors={colors} setSearch={setSearch} setPage={setPage}/>
       <main>
         <Sidebar
-          view={view}
-          setView={setView}
+          detail={detail}
+          setDetail={setDetail}
           colors={colors}
-          findClosestColors={findClosestColors}
           setClosestColors={setClosestColors}
-          setSearch={setSearch}
           setCategory={setCategory}
+          setPage={setPage}
         />
         <Contents
           colors={colors}
-          view={view}
-          setView={setView}
+          detail={detail}
+          setDetail={setDetail}
           setClosestColors={setClosestColors}
-          findClosestColors={findClosestColors}
           closestColors={closestColors}
           search={search}
           setSearch={setSearch}
           category={category}
+          page={page}
+          setPage={setPage}
         />
       </main>
     </div>

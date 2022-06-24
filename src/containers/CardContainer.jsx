@@ -1,23 +1,39 @@
 import Card from '../components/Card'
+import Pagination from '../components/Pagination'
+import {useState} from 'react'
 
-function CardContainer({ colors, setView, setClosestColors, findClosestColors }) {
-  const cards = colors.map(color => {
+function CardContainer({ colors, setDetail, setClosestColors, setPage }) {
+  const [currentPage, setCurrentPage] = useState(1);
+  const perPage = 12;
+  const indOfLast = currentPage * perPage;
+  const indOfFirst = indOfLast - perPage;
+  const currentColors = colors.slice(indOfFirst, indOfLast)
+  
+  const cards = currentColors.map(color => {
     return (
       <Card
         colorName={color}
         key={color}
         colors={colors}
-        setView={setView}
+        setDetail={setDetail}
+        setPage={setPage}
         setClosestColors={setClosestColors}
-        findClosestColors={findClosestColors}
         size="small"
       />
     )
   })
   return (
-    <div id="card-container">
-      {cards}
-    </div>
+    <section className="contents">
+      <div id="card-container">
+        {cards}
+      </div>
+      <Pagination
+        perPage={perPage}
+        currentPage={currentPage}
+        setCurrentPage={setCurrentPage}
+        totalColors={colors.length}
+      />
+    </section>
   )
 }
 

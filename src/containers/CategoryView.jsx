@@ -1,27 +1,18 @@
-import Pagination from "../components/Pagination";
 import CardContainer from "./CardContainer";
-import {useState} from 'react'
 
-function CategoryView ({category, setCategory}) {
-  const [currentPage, setCurrentPage] = useState(1);
-  const perPage = 12;
-  const indOfLast = currentPage * perPage;
-  const indOfFirst = indOfLast - perPage;
-  const currentColors = category.colors.slice(indOfFirst, indOfLast);
+function CategoryView ({category, setPage}) {
 
   const exitCategory = () => {
-    setCategory({viewCategory: false})
+    setPage('')
   }
 
   return (
     <div className="search-results">
-      <CardContainer colors={currentColors}/>
-      <Pagination
-        perPage={perPage}
-        currentPage={currentPage}
-        setCurrentPage={setCurrentPage}
-        totalColors={category.colors.length}
-      />
+      <div className="search-header">
+        <h1>Colors similar to '{category.name}'</h1>
+        <button onClick={exitCategory} className="exit-search-btn">clear</button>
+      </div>
+      <CardContainer colors={category.colors}/>
     </div>
   )
 }

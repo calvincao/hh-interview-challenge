@@ -1,11 +1,12 @@
-function Sidebar ({ setView, colors, findClosestColors, setClosestColors, setSearch, setCategory }) {
+import { findClosestColors } from "../helperFuncs";
+
+function Sidebar ({ setDetail, colors, setClosestColors, setCategory, setPage }) {
   const viewRandomColor = () => {
     const len = colors.length;
     const randomIndex = Math.floor(Math.random() * len);
-    setView(colors[randomIndex]);
+    setDetail(colors[randomIndex]);
     setClosestColors(findClosestColors(colors, colors[randomIndex]));
-    setSearch({viewResults: false});
-    setCategory({viewCategory: false});
+    setPage('detail');
   }
   const viewCategory = (e) => {
     const hexValues = {
@@ -20,7 +21,8 @@ function Sidebar ({ setView, colors, findClosestColors, setClosestColors, setSea
     };
     const colorName = e.target.innerText;
     const neighbors = findClosestColors(colors, hexValues[colorName], 12);
-    setCategory({viewCategory: true, name: colorName, colors: neighbors});
+    setCategory({ name: colorName, colors: neighbors });
+    setPage('category');
   }
 
   return (
