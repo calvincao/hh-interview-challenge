@@ -5,6 +5,11 @@ body, html, #root {
   height: 100%;
   overflow: hidden;
 }
+button, input {
+  font-family: 'DM Serif Text', serif;
+  font-size: large;
+  color: #363c3c;
+}
 .App {
   text-align: center;
   font-family: 'DM Serif Text', serif;
@@ -57,10 +62,10 @@ main {
 }
 .clear-btn {
   background-color: white;
-  border: 1px solid black;
+  border: 1px solid #363c3c;
   border-radius: 5px;
   padding: 1vh 1vh;
-  width: 15%
+  width: 15%;
 }
 #card-container {
   display: grid;
@@ -149,8 +154,7 @@ a{
   background-color: white;
   border: 1px solid black;
   border-radius: 5px;
-  padding: 1vh 1vh;
-  height: 75%
+  height: 75%;
 }
 h1{
   margin: 0;
