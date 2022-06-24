@@ -10,6 +10,9 @@ button, input {
   font-size: large;
   color: #363c3c;
 }
+button {
+  box-shadow: 1px 1px 10px 1px rgba(0, 0, 0, 0.2);
+}
 .App {
   text-align: center;
   font-family: 'DM Serif Text', serif;
