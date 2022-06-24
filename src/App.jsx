@@ -1,47 +1,48 @@
+import './App.css';
 import Navbar from './components/Navbar';
 import Sidebar from './components/Sidebar';
-import CardContainer from './containers/CardContainer';
-import Pagination from './components/Pagination';
-import DetailView from './containers/DetailView'
-import './App.css';
+import Contents from './containers/Contents';
+import { findClosestColors } from './helperFuncs';
 import { useState, useEffect } from 'react';
 
 function App() {
   const [view, setView] = useState(null);
-
+  const [closestColors, setClosestColors] = useState([]);
   const [colors, setColors] = useState([]);
-  const [currentPage, setCurrentPage] = useState(1);
-  const perPage = 12;
+  const [search, setSearch] = useState({viewResults: false, searchResults: [], searchTerm: ''});
 
   useEffect(()=>{
     const randomColors = [];
-    const generateColor = () => '#' + Math.floor(Math.random()*16777215).toString(16);
+    const generateColor = () => '#' + Math.floor(Math.random()*256**3).toString(16).padStart(6, '0');
     for (let i = 0; i < 100; i++){
       randomColors.push(generateColor())
     }
     setColors(randomColors);
   }, []);
 
-  const indOfLast = currentPage * perPage;
-  const indOfFirst = indOfLast - perPage;
-  const currentColors = colors.slice(indOfFirst, indOfLast)
-
   return (
     <div className="App">
-      <Navbar/>
-      <div id="main-body">
-        <Sidebar/>
-        <div className="contents">
-          {!view ?
-            <>
-              <CardContainer colors={currentColors} setView={setView}/>
-              <Pagination perPage={perPage} currentPage={currentPage} setCurrentPage={setCurrentPage} totalColors={colors.length}/>
-            </>
-            :
-            <DetailView view={view} setView={setView}/>
-          }
-        </div>
-      </div>
+      <Navbar colors={colors} setSearch={setSearch}/>
+      <main>
+        <Sidebar
+          view={view}
+          setView={setView}
+          colors={colors}
+          findClosestColors={findClosestColors}
+          setClosestColors={setClosestColors}
+          setSearch={setSearch}
+        />
+        <Contents
+          colors={colors}
+          view={view}
+          setView={setView}
+          setClosestColors={setClosestColors}
+          findClosestColors={findClosestColors}
+          closestColors={closestColors}
+          search={search}
+          setSearch={setSearch}
+        />
+      </main>
     </div>
   );
 }

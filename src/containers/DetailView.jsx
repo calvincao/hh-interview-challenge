@@ -1,10 +1,15 @@
 import Card from "../components/Card"
-function DetailView ({ view, setView }) {
+function DetailView ({ view, setView, closestColors }) {
+  const neighbors = closestColors.map(color => (
+    <Card colorName={color} key={color} className="neighbor"/>
+  ));
   return (
-    <div>  
-      <h1>{view}</h1>
-      <Card size="large"/>
-      <button onClick={()=>setView(null)}>Clear</button>
+    <div className="detail-view">
+      <Card colorName={view} size="large"/>
+      <div className="neighbor-colors">
+        { neighbors }
+      </div>
+      <button className="clear-btn" onClick={()=>setView(null)}>Clear</button>
     </div>
   )
 }

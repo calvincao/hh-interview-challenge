@@ -1,24 +1,35 @@
 
-function Card({ colorName, setView, size }) {
+function Card({ colors, colorName, setView, size, findClosestColors, setClosestColors }) {
   const small = {
     borderRadius: '8px 8px 0px 0px',
     width: '100%',
-    height: '15vh',
+    height: '18vh',
     backgroundColor: colorName
   }
   const large = {
     borderRadius: '8px 8px 0px 0px',
     width: '100%',
-    height: '15vh',
+    height: '50vh',
+    backgroundColor: colorName
+  }
+  const mini = {
+    borderRadius: '8px 8px 0px 0px',
+    width: '100%',
+    height: '10vh',
     backgroundColor: colorName
   }
   const viewCard = () => {
     setView(colorName);
-    console.log(colorName);
+    setClosestColors(findClosestColors(colors, colorName));
   }
   return (
     <div className="card">
-      <div style={size === small ? small : large} className="swatch" onClick={viewCard}/>
+      <area
+        alt={colorName}
+        style={size === 'small' ? small : size === 'large' ? large : mini}
+        className="swatch"
+        onClick={setView ? viewCard : null}
+      />
       <p>{colorName}</p>
     </div>
   )

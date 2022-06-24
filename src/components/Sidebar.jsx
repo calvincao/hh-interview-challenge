@@ -1,8 +1,15 @@
+function Sidebar ({ setView, colors, findClosestColors, setClosestColors, setSearch }) {
+  const viewRandomColor = () => {
+    const len = colors.length;
+    const randomIndex = Math.floor(Math.random() * len);
+    setView(colors[randomIndex]);
+    setClosestColors(findClosestColors(colors, colors[randomIndex]));
+    setSearch({...setSearch, viewResults: false})
+  }
 
-function Sidebar () {
   return (
     <section id="sidebar">
-      <button id="random-color-btn">Random Color</button>
+      <button id="random-color-btn" onClick={viewRandomColor}>Random Color</button>
       <ul>
         <li>Red</li>
         <li>Orange</li>
