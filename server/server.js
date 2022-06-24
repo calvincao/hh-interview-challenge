@@ -4,8 +4,6 @@ const port = process.env.PORT || 4000;
 
 const app = express();
 
-app.use('/', express.static('build'));
-
 app.get('/colors', (req, res) => {
   const randomNums = new Set();
   const hexFromDecimal = (num) => '#' + num.toString(16).padStart(6, '0');
