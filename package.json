@@ -19,7 +19,7 @@
     "server": "nodemon server/server.js",
     "client": "npm run start",
     "dev": "concurrently --kill-others \"npm run server\" \"npm run client\"",
-    "heroku-postbuild" : "NPM_CONFIG_PRODUCTION=false npm install && npm run build"
+    "heroku-postbuild" : "NPM_CONFIG_PRODUCTION=false npm install && npm run build && npm start"
   },
   "eslintConfig": {
     "extends": [

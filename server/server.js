@@ -4,6 +4,8 @@ const port = process.env.PORT || 4000;
 
 const app = express();
 
+app.use('/', express.static('build'));
+
 app.get('/colors', (req, res) => {
   const randomNums = new Set();
   const hexFromDecimal = (num) => '#' + num.toString(16).padStart(6, '0');
@@ -16,8 +18,5 @@ app.get('/colors', (req, res) => {
   const randomColors = [...randomNums].sort((a, b) => a - b).map((num) => hexFromDecimal(num));
   res.status(200).json(randomColors);
 });
-if (process.env.NODE_ENV === 'production') {
-  app.use(express.static('build'));
-}
 
 app.listen(port, () => console.log(`listening on port ${port}.`));
