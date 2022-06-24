@@ -21,8 +21,8 @@ app.get('/colors', (req, res) => {
   res.status(200).json(randomColors);
 });
 
-app.get('*', (req, res) => {
-  res.sendFile(path.join(publicPath, 'index.html'));
+app.use('*', (req, res) => {
+  res.status(400).send('Error 400: bad request');
 });
 
 app.listen(port, () => console.log(`Server running on port ${port}`));
