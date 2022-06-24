@@ -12,7 +12,7 @@ function CategoryView ({category, setPage, setDetail, setClosestColors}) {
         <h1>Colors similar to '{category.name}'</h1>
         <button onClick={exitCategory} className="exit-search-btn">clear</button>
       </div>
-      <CardContainer colors={category.colors} setDetail={setDetail} setClosestColors={setClosestColors} setPage={setPage}/>
+      <CardContainer colorsList={category.colors} setDetail={setDetail} setClosestColors={setClosestColors} setPage={setPage}/>
     </div>
   )
 }

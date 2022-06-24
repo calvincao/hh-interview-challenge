@@ -1,7 +1,7 @@
 import Card from "../components/Card"
-function DetailView ({ detail, setDetail, closestColors, setPage, colors, setClosestColors }) {
+function DetailView ({ detail, setDetail, closestColors, setPage, colorsList, setClosestColors }) {
   const neighbors = closestColors.map(color => (
-    <Card colorName={color} key={color} className="neighbor" setDetail={setDetail} colors={colors} setClosestColors={setClosestColors} setPage={setPage}/>
+    <Card colorName={color} key={color} className="neighbor" setDetail={setDetail} colorsList={colorsList} setClosestColors={setClosestColors} setPage={setPage}/>
   ));
   const exitDetail = () => {
     setDetail(null);

@@ -7,7 +7,7 @@ import { useState, useEffect } from 'react';
 function App() {
   const [detail, setDetail] = useState(null);
   const [closestColors, setClosestColors] = useState([]);
-  const [colors, setColors] = useState([]);
+  const [colorsList, setColorsList] = useState([]);
   const [search, setSearch] = useState({ searchTerm: '', searchResults: [] });
   const [category, setCategory] = useState({ name: '', colors: [] });
   const [page, setPage] = useState('');
@@ -24,23 +24,23 @@ function App() {
       randomNums.add(num)
     }
     const randomColors = [...randomNums].sort((a,b) => a - b).map(num => hexFromDecimal(num))
-    setColors(randomColors);
+    setColorsList(randomColors);
   }, []);
 
   return (
     <div className="App">
-      <Navbar colors={colors} setSearch={setSearch} setPage={setPage}/>
+      <Navbar colorsList={colorsList} setSearch={setSearch} setPage={setPage}/>
       <main>
         <Sidebar
           detail={detail}
           setDetail={setDetail}
-          colors={colors}
+          colorsList={colorsList}
           setClosestColors={setClosestColors}
           setCategory={setCategory}
           setPage={setPage}
         />
         <Contents
-          colors={colors}
+          colorsList={colorsList}
           detail={detail}
           setDetail={setDetail}
           setClosestColors={setClosestColors}

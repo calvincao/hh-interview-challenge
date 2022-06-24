@@ -18,7 +18,6 @@
     "eject": "react-scripts eject",
     "server": "nodemon server/server.js",
     "client": "npm run start",
-    "heroku": "node server/server.js",
     "dev": "concurrently --kill-others \"npm run server\" \"npm run client\""
   },
   "eslintConfig": {

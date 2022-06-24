@@ -23,7 +23,7 @@ function SearchResults ({ search, setPage, setDetail, setClosestColors }) {
           <h1>Search results for '{search.searchTerm}'</h1>
           <button onClick={exitSearch} className="exit-search-btn">clear search</button>
         </div>
-        <CardContainer colors={search.searchResults} setDetail={setDetail} setClosestColors={setClosestColors} setPage={setPage}/>
+        <CardContainer colorsList={search.searchResults} setDetail={setDetail} setClosestColors={setClosestColors} setPage={setPage}/>
       </div>
     )
   }

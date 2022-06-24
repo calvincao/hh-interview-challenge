@@ -1,6 +1,6 @@
 import { findClosestColors } from "../helperFuncs";
 
-function Card({ colors, colorName, setDetail, size, setClosestColors, setPage }) {
+function Card({ colorsList, colorName, setDetail, size, setClosestColors, setPage }) {
   const small = {
     borderRadius: '8px 8px 0px 0px',
     width: '100%',
@@ -21,7 +21,7 @@ function Card({ colors, colorName, setDetail, size, setClosestColors, setPage })
   }
   const viewCard = () => {
     setDetail(colorName);
-    setClosestColors(findClosestColors(colors, colorName));
+    setClosestColors(findClosestColors(colorsList, colorName));
     setPage('detail');
   }
   return (

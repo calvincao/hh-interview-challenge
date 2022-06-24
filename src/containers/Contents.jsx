@@ -3,7 +3,7 @@ import DetailView from './DetailView';
 import SearchResults from './SearchResults';
 import CategoryView from './CategoryView';
 
-function Contents ({detail, setDetail, setClosestColors, colors, closestColors, search, category, page, setPage}) {
+function Contents ({detail, setDetail, setClosestColors, colorsList, closestColors, search, category, page, setPage}) {
   if (page === 'search') return (
     <SearchResults
       search={search}
@@ -27,12 +27,12 @@ function Contents ({detail, setDetail, setClosestColors, colors, closestColors, 
       closestColors={closestColors}
       setClosestColors={setClosestColors}
       setPage={setPage}
-      colors={colors}
+      colorsList={colorsList}
     />
   )
   else return (
     <CardContainer
-      colors={colors}
+      colorsList={colorsList}
       setDetail={setDetail}
       setClosestColors={setClosestColors}
       setPage={setPage}

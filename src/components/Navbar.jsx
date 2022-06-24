@@ -1,11 +1,11 @@
 import logo from '../logo-symbol.svg'
-function Navbar ({ colors, setSearch, setPage }) {
+function Navbar ({ colorsList, setSearch, setPage }) {
   const search = (e) => {
     if (e.target.value === ''){
       setPage('');
       return;
     }
-    const results = colors.filter(color => color.includes(e.target.value));
+    const results = colorsList.filter(color => color.includes(e.target.value));
     setSearch({ searchResults: results, searchTerm: e.target.value })
     setPage('search');
   }
