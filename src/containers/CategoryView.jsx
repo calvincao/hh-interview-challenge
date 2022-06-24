@@ -1,6 +1,6 @@
 import CardContainer from "./CardContainer";
 
-function CategoryView ({category, setPage}) {
+function CategoryView ({category, setPage, setDetail, setClosestColors}) {
 
   const exitCategory = () => {
     setPage('')
@@ -12,7 +12,7 @@ function CategoryView ({category, setPage}) {
         <h1>Colors similar to '{category.name}'</h1>
         <button onClick={exitCategory} className="exit-search-btn">clear</button>
       </div>
-      <CardContainer colors={category.colors}/>
+      <CardContainer colors={category.colors} setDetail={setDetail} setClosestColors={setClosestColors} setPage={setPage}/>
     </div>
   )
 }

@@ -8,12 +8,16 @@ function Contents ({detail, setDetail, setClosestColors, colors, closestColors, 
     <SearchResults
       search={search}
       setPage={setPage}
+      setDetail={setDetail}
+      setClosestColors={setClosestColors}
     />
   )
   else if (page === 'category') return (
     <CategoryView
       category={category}
       setPage={setPage}
+      setDetail={setDetail}
+      setClosestColors={setClosestColors}
     />
   )
   else if (page === 'detail') return (

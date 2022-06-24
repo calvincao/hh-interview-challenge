@@ -1,6 +1,6 @@
 import CardContainer from "./CardContainer";
 
-function SearchResults ({ search, setPage }) {
+function SearchResults ({ search, setPage, setDetail, setClosestColors }) {
   const exitSearch = () => {
     setPage('')
     document.getElementById('search').value = null;
@@ -23,7 +23,7 @@ function SearchResults ({ search, setPage }) {
           <h1>Search results for '{search.searchTerm}'</h1>
           <button onClick={exitSearch} className="exit-search-btn">clear search</button>
         </div>
-        <CardContainer colors={search.searchResults}/>
+        <CardContainer colors={search.searchResults} setDetail={setDetail} setClosestColors={setClosestColors} setPage={setPage}/>
       </div>
     )
   }
