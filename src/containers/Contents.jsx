@@ -3,8 +3,18 @@ import DetailView from './DetailView';
 import SearchResults from './SearchResults';
 import CategoryView from './CategoryView';
 
-function Contents ({detail, setDetail, setClosestColors, colorsList, closestColors, search, category, page, setPage}) {
-  if (page === 'search') return (
+function Contents({ detail, setDetail, setClosestColors, colorsList, closestColors, search, category, page, setPage, error }) {
+  if (page === 'loading') return (
+    <section className="contents">
+      <h1>Loading colors...</h1>
+    </section>
+  )
+  else if (error === true) return (
+    <section className="contents">
+      <h1>Error fetching colors...</h1>
+    </section>
+  )
+  else if (page === 'search') return (
     <SearchResults
       search={search}
       setPage={setPage}
